@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Siswa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: #0a0a0a; /* Background Hitam */
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Animasi Bunga Berguguran */
+        .flower {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 0;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 25px;
+            text-align: center;
+            animation: fadeDown 1s ease;
+            z-index: 1;
+        }
+        header h1 {
+            font-size: 38px;
+            color: white;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #ff69b4;
+        }
+        header p {
+            color: #ccc;
+            margin-top: 8px;
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Card */
+        .card {
+            width: 380px;
+            padding: 30px;
+            border-radius: 25px;
+            text-align: center;
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        /* Foto */
+        .profile-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 3px solid #ff69b4;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        /* Nama */
+        .card h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: #ff69b4;
+        }
+
+        /* Deskripsi */
+        .desc {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-top: 10px;
+            color: #ddd;
+        }
+
+        /* Quote */
+        .quote {
+            margin-top: 20px;
+            font-style: italic;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        /* Sosial Media */
+        .social {
+            margin-top: 25px;
+        }
+        .social a {
+            text-decoration: none;
+            color: white;
+            font-size: 24px;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+        .social a:hover {
+            color: #ff69b4;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div id="flower-container"></div>
+
+    <header>
+        <h1>Profile Diri Siswa</h1>
+        <p> Kreatif Modern Creative </p>
+    </header>
+    
+    <div class="card">
+        <img src="IMG_20260608_054555.jpg" alt="Foto Profil" class="profile-img">
+        <h2>Zahrotus Sita Kurniatin</h2>
+        <div class="desc">
+            <p><b>Kelas:</b> X Keperawatan</p>
+            <p><b>Sekolah:</b> SMKS Kesehatan Yannas Husada Bangkalan</p>
+            <p><b>Hobi:</b> Menonton drama dan series</p>
+        </div>
+        <div class="quote">
+            "Karena pada akhirnya, aku sadar bahwa aku tidak akan pernah bisa menjalani skenario hidup ini sendirian jika mereka tidak ada di dalamnya."
+        </div>
+        <div class="social">
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" title="Github"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+
+    <script>
+        // Script sederhana untuk membuat bunga berguguran secara acak
+        const container = document.getElementById('flower-container');
+        const flowerIcons = ['🌸', '🌺', '🌼', '🌹'];
+        
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.innerText = flowerIcons[Math.floor(Math.random() * flowerIcons.length)];
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDuration = Math.random() * 3 + 2 + 's'; // Antara 2-5 detik
+            flower.style.opacity = Math.random();
+            
+            container.appendChild(flower);
+            
+            // Hapus elemen setelah animasi selesai agar tidak berat
+            setTimeout(() => {
+                flower.remove();
+            }, 5000);
+        }
+
+        // Munculkan bunga setiap 300ms
+        setInterval(createFlower, 300);
+    </script>
+</body>
+</html>
